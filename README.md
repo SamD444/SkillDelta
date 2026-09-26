@@ -4,7 +4,7 @@ SkillDelta is a modern full-stack application designed to help users track and m
 
 **Live Demo:** [https://skilldelta.vercel.app](https://skilldelta.vercel.app)  
 **Backend API:** [https://samd444-skilldelta.hf.space](https://samd444-skilldelta.hf.space)  
-**Repository:** [SAMBHAV001-tech/SkillDelta](https://github.com/SAMBHAV001-tech/SkillDelta)
+**Repository:** [SamD444/SkillDelta](https://github.com/SamD444/SkillDelta)
 
 ---
 
@@ -23,6 +23,7 @@ SkillDelta is a modern full-stack application designed to help users track and m
 - **Frontend:** React 19, Vite, Tailwind CSS, Recharts
 - **Backend:** FastAPI, Python 3.13, PostgreSQL (SQLAlchemy)
 - **Document Processing & AI:** PyTesseract (OCR), PDFPlumber, Groq API
+- **Email Delivery:** Mailjet (migrated from SendGrid)
 - **Deployment:** Vercel (Frontend), Docker + Hugging Face Spaces (Backend)
 
 ---
@@ -59,7 +60,7 @@ FastAPI routes are cleanly organized into modular domains:
 - **Assessment & Practice APIs**: Managing evaluation feedback and practice routines.
 - **Analytics & History APIs**: Skill analysis, growth visualization, skill health decay, and history tracking.
 - **AI & Recommendations APIs**: Machine learning predictions and personalized AI recommendations via Groq.
-- **Notifications APIs**: Management of reminders and automated alerts via APScheduler.
+- **Notifications APIs**: Management of reminders and automated alerts via APScheduler + **Mailjet** email delivery.
 
 <details>
 <summary><b>View Deployed Routes</b></summary>
@@ -98,7 +99,7 @@ FastAPI routes are cleanly organized into modular domains:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/SAMBHAV001-tech/SkillDelta.git
+git clone https://github.com/SamD444/SkillDelta.git
 cd SkillDelta
 ```
 
@@ -147,4 +148,4 @@ We welcome contributions! Please create an issue or submit a pull request.
 
 **Support & Docs:**
 - Live Project: [https://skilldelta.vercel.app](https://skilldelta.vercel.app)
-- Repo: [https://github.com/SAMBHAV001-tech/SkillDelta](https://github.com/SAMBHAV001-tech/SkillDelta)
+- Repo: [https://github.com/SamD444/SkillDelta](https://github.com/SamD444/SkillDelta)

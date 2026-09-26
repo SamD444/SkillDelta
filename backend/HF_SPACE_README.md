@@ -37,13 +37,15 @@ DATABASE_URL
 JWT_SECRET
 JWT_ALGORITHM
 GROQ_API_KEY
+GROQ_MODEL
 YOUTUBE_API_KEY
 EMAIL_ADDRESS
-EMAIL_PASSWORD
-SENDGRID_API_KEY
+MJ_API_KEY
+MJ_SECRET_KEY
 CRON_SECRET
 APP_NAME
 LLM_ENABLED
 ```
 
 > ⚠️ Never commit your `.env` file. Add all secrets via the HF Space Settings UI.
+> 📧 Email delivery is handled by **Mailjet** (`MJ_API_KEY` + `MJ_SECRET_KEY`). SendGrid is no longer used.
