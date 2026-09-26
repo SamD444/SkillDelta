@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings
 from pathlib import Path
+import os
 
 
 class Settings(BaseSettings):
@@ -14,10 +15,6 @@ class Settings(BaseSettings):
     # 🔹 Email
     # -----------------------------------
     EMAIL_ADDRESS: str | None = None
-    EMAIL_PASSWORD: str | None = None
-
-    # 🔥 SendGrid (recommended for production)
-    SENDGRID_API_KEY: str | None = None
 
     # -----------------------------------
     # 🔐 JWT
@@ -43,7 +40,5 @@ settings = Settings()
 print("ENV FILE LOADED")
 print("DATABASE URL USED:", settings.DATABASE_URL)
 print("EMAIL LOADED:", settings.EMAIL_ADDRESS)
-print("SENDGRID ENABLED:", bool(settings.SENDGRID_API_KEY))
-
-if not settings.EMAIL_ADDRESS and not settings.SENDGRID_API_KEY:
-    print("⚠ WARNING: No email provider configured. Email reminders will fail.")
+print("MAILJET ENABLED:", bool(os.getenv("MJ_API_KEY")))
+print("MAILJET SECRET AVAILABLE:", bool(os.getenv("MJ_SECRET_KEY")))
