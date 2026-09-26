@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # full history so HF gets proper commit graph
+          fetch-depth: 0
 
       - name: Push to Hugging Face Space
         env:
@@ -21,5 +21,15 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
+          
+          # Prepare Space README with required HF Docker metadata frontmatter
+          cp backend/HF_SPACE_README.md backend/README.md
+          git add backend/README.md
+          git commit -m "Setup HF Space README" || true
+          
+          # Extract backend directory to root for Hugging Face Space deployment
+          git subtree split --prefix backend -b hf-release
+          
+          # Push to Hugging Face Space
           git remote add space https://SamD444:${HF_TOKEN}@huggingface.co/spaces/SamD444/SkillDelta
-          git push space main --force
+          git push space hf-release:main --force
