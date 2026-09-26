@@ -10,19 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the full repository (including all files/history)
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0        # Full history so HF Space gets correct commit metadata
+          fetch-depth: 0   # full history so HF gets proper commit graph
 
-      # Step 2: Sync to Hugging Face Space
-      # HF_TOKEN must be added to GitHub: Settings > Secrets and variables > Actions
-      # Create a secret named HF_TOKEN with a Write-access token from hf.co/settings/tokens
-      - name: Sync to Hugging Face Space
-        uses: huggingface/hub-sync@v0.1.0
-        with:
-          github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: SamD444/SkillDelta
-          hf_token: "${{ secrets.HF_TOKEN }}"
-          repo_type: space
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git remote add space https://SamD444:${HF_TOKEN}@huggingface.co/spaces/SamD444/SkillDelta
+          git push space main --force
